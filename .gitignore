@@ -1,0 +1,8 @@
+/venv/
+/.idea/
+/.env
+/assets/
+/db.sqlite3
+/media/
+*.pyc
+*__pycache/
