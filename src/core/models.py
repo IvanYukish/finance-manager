@@ -39,7 +39,7 @@ class Income(AbstractDateTimeModel):
     user = models.ForeignKey(CustomUser, related_name='income', on_delete=models.CASCADE)
     prise = models.PositiveIntegerField(_('Прибуток'), )
     description = models.PositiveIntegerField(_('Опис'), )
-    category = models.ForeignKey(Category, related_name='income', on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, related_name='income', on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Прибуток')
