@@ -34,6 +34,13 @@ class Category(models.Model):
     name = models.CharField(_('Ім\'я'), max_length=40)
     description = models.TextField(_('Опис'), max_length=500)
 
+    class Meta:
+        verbose_name = _('Категорія')
+        verbose_name_plural = _('Категорії')
+
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Income(AbstractDateTimeModel):
     user = models.ForeignKey(CustomUser, related_name='income', on_delete=models.CASCADE)
