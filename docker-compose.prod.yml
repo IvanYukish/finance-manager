@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:12
+    env_file:
+      - .env.prod
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    command:
+      gunicorn finance_manager.wsgi:application --bind 0.0.0.0:8000
+    expose:
+      - 8000
+    volumes:
+      - .:/home/app/web
+    env_file:
+      - .env.prod
+    depends_on:
+      - postgres
+  nginx:
+      build: ./nginx
+      volumes:
+        - ./src/assets:/home/web/src/assets
+      ports:
+        - 1337:80
+      depends_on:
+        - django
+
+volumes:
+  pgdata:
