@@ -1,7 +1,7 @@
-###Setup development environment
-###Create Development Environment for finance-manager
+### Setup development environment
+### Create Development Environment for finance-manager
 
-####Preparation 
+#### Preparation 
 Clone repository:
 
 ```bash
@@ -31,7 +31,7 @@ sudo apt install -y postgresql-client
 ```
 
 
-###First Launch
+### First Launch
 Create environment variables file:
 ```bash
 cp env.example .env
