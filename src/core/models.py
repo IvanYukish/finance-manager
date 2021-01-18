@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
@@ -14,8 +15,8 @@ class AbstractDateTimeModel(models.Model):
         abstract = True
 
 
-class Debts(AbstractDateTimeModel):
-    user = models.ForeignKey(CustomUser, related_name='debt', on_delete=models.CASCADE)
+class Debt(AbstractDateTimeModel):
+    user = models.ForeignKey(get_user_model(), related_name='debt', on_delete=models.CASCADE)
     debtor_name = models.CharField(_('Ім\'я'), max_length=100)
     mod = models.CharField(_('Модифікатор'), choices=DebtMod.MOD_CHOICES, max_length=1)
     prise = models.PositiveIntegerField(_('Значення'))
@@ -43,7 +44,7 @@ class Category(models.Model):
 
 
 class Income(AbstractDateTimeModel):
-    user = models.ForeignKey(CustomUser, related_name='income', on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), related_name='income', on_delete=models.CASCADE)
     prise = models.PositiveIntegerField(_('Прибуток'), )
     description = models.PositiveIntegerField(_('Опис'), )
     category = models.ForeignKey(Category, related_name='income', on_delete=models.SET_NULL, null=True, blank=True)
@@ -57,7 +58,7 @@ class Income(AbstractDateTimeModel):
 
 
 class Cost(AbstractDateTimeModel):
-    user = models.ForeignKey(CustomUser, related_name='cost', on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), related_name='cost', on_delete=models.CASCADE)
     prise = models.PositiveIntegerField(_('Витрата'), )
     description = models.PositiveIntegerField(_('Опис'), )
     category = models.ForeignKey(Category, related_name='cost', on_delete=models.SET_NULL, null=True, blank=True)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from core.models import Debts, Category, Income
+from core.models import Debt, Category, Income
 
 
 class DebtsAdmin(admin.ModelAdmin):
@@ -15,6 +15,6 @@ class IncomeAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Debts, DebtsAdmin)
+admin.site.register(Debt, DebtsAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Income, IncomeAdmin)
