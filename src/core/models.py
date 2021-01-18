@@ -34,6 +34,13 @@ class Category(models.Model):
     name = models.CharField(_('Ім\'я'), max_length=40)
     description = models.TextField(_('Опис'), max_length=500)
 
+    class Meta:
+        verbose_name = _('Категорія')
+        verbose_name_plural = _('Категорії')
+
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Income(AbstractDateTimeModel):
     user = models.ForeignKey(CustomUser, related_name='income', on_delete=models.CASCADE)
@@ -44,6 +51,20 @@ class Income(AbstractDateTimeModel):
     class Meta:
         verbose_name = _('Прибуток')
         verbose_name_plural = _('Прибутки')
+
+    def __str__(self):
+        return f'{self.prise} - {self.category}'
+
+
+class Cost(AbstractDateTimeModel):
+    user = models.ForeignKey(CustomUser, related_name='cost', on_delete=models.CASCADE)
+    prise = models.PositiveIntegerField(_('Витрата'), )
+    description = models.PositiveIntegerField(_('Опис'), )
+    category = models.ForeignKey(Category, related_name='cost', on_delete=models.SET_NULL, null=True, blank=True)
+
+    class Meta:
+        verbose_name = _('Витрата')
+        verbose_name_plural = _('Витрати')
 
     def __str__(self):
         return f'{self.prise} - {self.category}'
