@@ -12,7 +12,7 @@ from core.models import Debt
 
 class HomeView(TemplateView):
     def get(self, request, *args, **kwargs):
-        return render(request, 'base/home.html', {})
+        return render(request, 'core/home.html', {})
 
 
 class DebtsListView(LoginRequiredMixin, ListView):
