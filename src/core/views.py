@@ -6,7 +6,7 @@ from django.views.generic.base import View
 
 class HomeView(TemplateView):
     def get(self, request, *args, **kwargs):
-        return render(request, 'base/home.html', {})
+        return render(request, 'core/home.html', {})
 
 
 class DebtListView(ListView):

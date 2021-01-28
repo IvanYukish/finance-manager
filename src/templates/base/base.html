@@ -22,9 +22,14 @@
 </head>
 <body>
 <!--Header_section-->
+{% block header  %}
+{% include 'base/header.html' %}
+{% endblock %}
 {% block content %}
 {% endblock %}
-
+{% block footer %}
+{% include 'base/footer.html'%}
+{% endblock %}
 <script type="text/javascript" src="{% static '/js/jquery-1.11.0.min.js' %}"></script>
 <script type="text/javascript" src="{% static '/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static '/js/jquery-scrolltofixed.js' %}"></script>
