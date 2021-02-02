@@ -43,7 +43,9 @@ Launch docker-compose:
 docker-compose up -d --build
 ```
 
+```bash
 docker-compose exec django python manage.py migrate
+```
 
 Restart project:
 ```bash
