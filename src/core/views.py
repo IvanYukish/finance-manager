@@ -21,7 +21,7 @@ class DebtsListView(LoginRequiredMixin, ListView):
     context_object_name = 'debts'
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(DebtsListView, self).get_context_data(object_list=object_list, **kwargs)
+        context = super().get_context_data(object_list=object_list, **kwargs)
         return context
 
     def get_queryset(self):
@@ -34,10 +34,13 @@ class DebtsDetailView(DetailView):
     context_object_name = 'debt'
 
     def get_context_data(self, **kwargs):
-        pass
+        context = super().get_context_data(**kwargs)
+
+        return context
 
     def get_object(self, queryset=None):
-        pass
+        debt_id = int(self.kwargs.get('id'))
+        return Debt.objects.get(id=debt_id)
 
 
 class DebtsCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -64,18 +67,30 @@ class DebtsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_message = _('Ваш боржник був успішно Видалений')
 
     def get_object(self, queryset=None):
-        pass
+        debt_id = int(self.kwargs.get('id'))
+        return Debt.objects.get(id=debt_id)
 
     def test_func(self):
         pass
 
 
-class DebtsUpdateView(UpdateView):
+class DebtsUpdateView(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     model = Debt
+    form_class = DebtForm
     template_name = 'core/debt_update.html'
-    context_object_name = 'debts'
-    success_url = reverse_lazy('core:profile')
+    context_object_name = 'debt'
     success_message = _('Дані про боржника були успішно змінені')
+
+    def get_context_data(self, **kwargs):
+        context = super(DebtsUpdateView, self).get_context_data(**kwargs)
+        return context
+
+    def get_object(self, queryset=None):
+        debt_id = int(self.kwargs.get('id'))
+        return Debt.objects.get(id=debt_id)
+
+    def get_success_url(self):
+        return reverse_lazy('core:debt-detail', args=(self.kwargs.get('id'), ))
 
 
 class DebtsSynchronizeView(View):

@@ -1,0 +1,6 @@
+{% for i in debts %}
+    <p><a href="{% url 'core:debt-detail' i.id %}">{{ i.id }}   {{ i.debtor_name }}
+        {{ i.description }}</a></p>
+{% endfor %}
+
+{{ data }}

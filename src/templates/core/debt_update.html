@@ -1,0 +1,5 @@
+<form action="{% url "core:debt-update" debt.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Змінити</button>
+</form>

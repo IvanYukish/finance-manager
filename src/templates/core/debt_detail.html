@@ -1,0 +1,6 @@
+<p></p>{{ debt.id }}
+<p></p>{{ debt.debtor_name }}
+<p></p>{{ debt.description }}
+<p></p>{{ debt.user.username }}
+<p></p>{{ debt.prise }}
+<a href="{% url 'core:debt-update' debt.id %}">Змінити борг</a>
