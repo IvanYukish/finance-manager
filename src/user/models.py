@@ -10,6 +10,7 @@ class CustomUser(AbstractUser):
     avatar = models.ImageField(_('Аватар'), upload_to=path_and_rename, blank=True, null=True, default=None)
     phone_number = models.CharField(_('Номер Телефону'), max_length=20, validators=[phone_validator], null=True,
                                     blank=True)
+    email = models.EmailField(_('email address'), unique=True)
 
     class Meta:
         verbose_name = _('Користувач')
