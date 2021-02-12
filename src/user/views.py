@@ -39,11 +39,15 @@ class FriendDeleteView(LoginRequiredMixin, DeleteView):
 
 class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = CustomUser
-    template_name = ''
-    context_object_name = ''
+    template_name = 'user/profile_detail.html'
+    context_object_name = 'user'
 
     def get_context_data(self, **kwargs):
-        pass
+        context = super().get_context_data(**kwargs)
+        return context
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
