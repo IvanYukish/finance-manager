@@ -79,18 +79,9 @@ TEMPLATES = [
     },
 ]
 
-ACCOUNT_FORMS = {
-    'signup': 'user.forms.CustomSignupForm',
-}
-
 AUTHENTICATION_BACKENDS = [
-
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
+    'user.backends.EmailBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
-
 ]
 
 SITE_ID = env('SITE_ID', default=1)
@@ -174,7 +165,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # allauth settings
-
+ACCOUNT_FORMS = {
+    'signup': 'user.forms.CustomSignupForm',
+}
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'

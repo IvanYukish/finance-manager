@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils import timezone
@@ -17,7 +19,7 @@ class AbstractDateTimeModel(models.Model):
 
 class Debt(AbstractDateTimeModel):
     user = models.ForeignKey(get_user_model(), related_name='debt', on_delete=models.CASCADE)
-    debtor_name = models.CharField(_('Ім\'я'), max_length=100, unique=True)
+    debtor_name = models.CharField(_('Ім\'я'), max_length=100)
     mod = models.CharField(_('Модифікатор'), choices=DebtMod.MOD_CHOICES, max_length=1)
     prise = models.PositiveIntegerField(_('Значення'))
     description = models.CharField(_('Опис'), max_length=500)
@@ -26,6 +28,9 @@ class Debt(AbstractDateTimeModel):
     class Meta:
         verbose_name = _('Борг')
         verbose_name_plural = _('Борги')
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'debtor_name'], name='debtor constraint')
+        ]
 
     def __str__(self):
         return f'{self.debtor_name}- {self.prise}'
