@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Profile" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Profile detail" %}</h1>
+    <h3>{{ user.first_name }}</h3>
+    <h3>{{ user.last_name }}</h3>
+    <h3>{{ user.email }}</h3>
+    <h3>{{ user.phone_number }}</h3>
+    <h3>{{ user.last_login }}</h3>
+{% endblock %}

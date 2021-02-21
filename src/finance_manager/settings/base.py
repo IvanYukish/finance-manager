@@ -44,6 +44,11 @@ INSTALLED_APPS = [
 
     'user',
     'core',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +78,13 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'user.backends.EmailBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = env('SITE_ID', default=1)
 
 WSGI_APPLICATION = 'finance_manager.wsgi.application'
 
@@ -109,12 +121,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = ['user.backends.EmailBackend']
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
 
 TIME_ZONE = 'UTC'
 
@@ -141,3 +163,24 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# allauth settings
+ACCOUNT_FORMS = {
+    'signup': 'user.forms.CustomSignupForm',
+}
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USERNAME_REQUIRED = False
+
+LOGIN_REDIRECT_URL = '/user/profile/'
+LOGIN_URL = '/user/login/'
+
+# ACCOUNT_ADAPTER = 'user.adapter.MyAccountAdapter'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'finance.manager.for.bis@gmail.com'
+EMAIL_HOST_PASSWORD = 'DpYS2mkwFgnifAD'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
