@@ -2,10 +2,11 @@ import uuid
 
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
-from core.constants import DebtMod
+from core.constants import DebtMode, CategoryType
 from user.models import CustomUser
 
 
@@ -20,7 +21,7 @@ class AbstractDateTimeModel(models.Model):
 class Debt(AbstractDateTimeModel):
     user = models.ForeignKey(get_user_model(), related_name='debt', on_delete=models.CASCADE)
     debtor_name = models.CharField(_('Ім\'я'), max_length=100)
-    mod = models.CharField(_('Модифікатор'), choices=DebtMod.MOD_CHOICES, max_length=1)
+    mode = models.CharField(_('Модифікатор'), choices=DebtMode.MODE_CHOICES, max_length=1, default='-')
     prise = models.PositiveIntegerField(_('Значення'))
     description = models.CharField(_('Опис'), max_length=500)
     debt_time = models.DateTimeField(_('Час зміни'), default=timezone.now)
@@ -37,40 +38,37 @@ class Debt(AbstractDateTimeModel):
 
 
 class Category(models.Model):
+    user = models.ForeignKey(get_user_model(), related_name='category', on_delete=models.CASCADE)
     name = models.CharField(_('Ім\'я'), max_length=40)
-    description = models.TextField(_('Опис'), max_length=500)
+    description = models.TextField(_('Опис'), max_length=500, null=True, blank=True)
+    type = models.CharField(_('Тип'), choices=CategoryType.TYPE_CHOICES, max_length=1, default='-')
 
     class Meta:
         verbose_name = _('Категорія')
         verbose_name_plural = _('Категорії')
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'name'], name='category constraint')
+        ]
 
     def __str__(self):
         return f'{self.name}'
 
+    def get_absolute_url(self):
+        return reverse('core:category-list')
 
-class Income(AbstractDateTimeModel):
-    user = models.ForeignKey(get_user_model(), related_name='income', on_delete=models.CASCADE)
-    prise = models.PositiveIntegerField(_('Прибуток'), )
-    description = models.PositiveIntegerField(_('Опис'), )
-    category = models.ForeignKey(Category, related_name='income', on_delete=models.SET_NULL, null=True, blank=True)
+
+class Transaction(AbstractDateTimeModel):
+    prise = models.PositiveIntegerField(_('Сума'), )
+    description = models.TextField(_('Опис'), max_length=500, null=True, blank=True)
+    category = models.ForeignKey(Category, related_name='transaction', on_delete=models.CASCADE)
+    date = models.DateTimeField(_('Час виконання'), default=timezone.now)
 
     class Meta:
-        verbose_name = _('Прибуток')
-        verbose_name_plural = _('Прибутки')
+        verbose_name = _('Транзакція')
+        verbose_name_plural = _('Транзакції')
 
     def __str__(self):
         return f'{self.prise} - {self.category}'
 
-
-class Cost(AbstractDateTimeModel):
-    user = models.ForeignKey(get_user_model(), related_name='cost', on_delete=models.CASCADE)
-    prise = models.PositiveIntegerField(_('Витрата'), )
-    description = models.PositiveIntegerField(_('Опис'), )
-    category = models.ForeignKey(Category, related_name='cost', on_delete=models.SET_NULL, null=True, blank=True)
-
-    class Meta:
-        verbose_name = _('Витрата')
-        verbose_name_plural = _('Витрати')
-
-    def __str__(self):
-        return f'{self.prise} - {self.category}'
+    def get_absolute_url(self):
+        return reverse('core:transaction-list')

@@ -164,6 +164,9 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+UPLOAD_TO_PATHS = {
+    'CustomUser': 'upload_images/avatars/%Y/%m/%d/',
+}
 # allauth settings
 ACCOUNT_FORMS = {
     'signup': 'user.forms.CustomSignupForm',

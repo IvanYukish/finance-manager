@@ -1,0 +1,57 @@
+{% extends "base/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "User list" %}{% endblock %}
+
+{% block content %}
+    <h2>{% trans "User list" %}</h2>
+
+    {% for user in users %}
+        <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+        {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" alt="User Avatar">
+        {% else %}
+            <p>No Image User</p>
+        {% endif %}
+        {% if user.last_login %}
+            <h4>{{ user.last_login }}</h4><br>
+        {% else %}
+            <h4>{% trans "Recently" %}</h4><br>
+        {% endif %}
+    {% endfor %}
+
+    {% if is_paginated %}
+        <ul class="pagination">
+            {% if users.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ users.previous_page_number }}"
+                    >&laquo;</a
+                    >
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">&laquo;</a>
+                </li>
+            {% endif %} {% for i in paginator.page_range %} {% if users.number == i %}
+            <li class="page-item"><a class="page-link active">{{ i }}</a></li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            </li>
+        {% endif %} {% endfor %} {% if users.has_next %}
+            <li class="page-item">
+                <a href="?page={{ users.next_page_number }}" class="page-link"
+                >&raquo;</a
+                >
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link">&raquo;</a>
+            </li>
+        {% endif %}
+        </ul>
+    {% endif %}
+
+
+{% endblock %}

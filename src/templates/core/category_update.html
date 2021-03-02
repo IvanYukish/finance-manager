@@ -2,13 +2,13 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Update debt" %}{% endblock %}
+{% block head_title %}{% trans "Update category" %}{% endblock %}
 
 {% block content %}
 
-    <h1>{% trans "Update debt" %}</h1>
+    <h1>{% trans "Update category" %}</h1>
 
-    <form action="{% url "core:debt-update" debt.id %}" method="post">
+    <form action="{% url "core:category-update" category.id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">{% trans "Update" %}</button>

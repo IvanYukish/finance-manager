@@ -1,6 +1,24 @@
-{% for i in debts %}
-    <p><a href="{% url 'core:debt-detail' i.id %}">{{ i.id }}   {{ i.debtor_name }}
-        {{ i.description }}</a></p>
-{% endfor %}
+{% extends "base/base.html" %}
 
-{{ data }}
+{% load i18n %}
+
+{% block head_title %}{% trans "Debt list" %}{% endblock %}
+
+{% block content %}
+
+    <h1>{% trans "Debt list" %}</h1>
+
+    {% for debt in debts %}
+
+        <p>{{ debt.debtor_name }} {{ debt.description }} {{ debt.prise }}</p>
+        <div class="container align-items-center">
+            <a type="button" class="btn btn-default btn-sm ml-3"
+               href="{% url 'core:debt-detail' debt.id %}">{% trans "Debt detail" %}</a>
+        </div>
+    {% endfor %}
+    
+    <a type="button" class="btn btn-success btn-sm ml-3"
+       href="{% url 'core:debt-create' %}">{% trans "Create new debt" %}</a>
+    {{ data }}
+
+{% endblock %}
