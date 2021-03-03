@@ -1,0 +1,11 @@
+{% extends "base/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Access is denied" %}{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center">
+        <h1>{% trans "Access denied!" %}</h1>
+    </div>
+{% endblock %}

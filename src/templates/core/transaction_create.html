@@ -2,19 +2,20 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Add debtor" %}{% endblock %}
+{% block head_title %}{% trans "Add transaction" %}{% endblock %}
 
 {% block content %}
 
-    <h1>{% trans "Add your new debt" %}</h1>
+    <h1>{% trans "Add new transaction" %}</h1>
 
-    <form method="POST" action="{% url 'core:debt-create' %}">
+
+    <form method="POST" action="{% url 'core:transaction-create' %}">
         {% csrf_token %}
         {{ form.as_p }}
         {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
         {% endif %}
-        <button class="primaryAction" type="submit">{% trans "Add debtor" %}</button>
+        <button class="primaryAction" type="submit">{% trans "Add transaction" %}</button>
     </form>
 
 {% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Category list" %}{% endblock %}
+
+{% block content %}
+
+    <h1>{% trans "Category list" %}</h1>
+
+    {% for category in categories %}
+        <p> {{ category.name }}
+            {{ category.description }}
+            {% if category.type == '-' %}
+                {% trans "Cost" %}
+            {% else %}
+                {% trans "Income" %}
+            {% endif %}
+        </p>
+        <div class="container align-items-center">
+            <a type="button" class="btn btn-default btn-sm ml-3"
+               href="{% url 'core:category-update' category.id %}">{% trans "Update category" %}</a>
+
+            <a onclick='return confirm("Are you sure you want to delete Category?");'>
+                <div class="col-xs-1">
+                    <form method="post" action="{% url 'core:category-delete' category.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm ml-3">{% trans "Delete" %}</button>
+                    </form>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+
+    <br>
+
+    <a type="button" class="btn btn-primary btn-sm ml-3"
+       href="{% url 'core:category-create' %}">{% trans "Create new category" %}</a>
+
+    <a type="button" class="btn btn-success btn-sm ml-3"
+       href="{% url 'core:transaction-create' %}">{% trans "Create new Transaction" %}</a>
+    {{ data }}
+
+{% endblock %}

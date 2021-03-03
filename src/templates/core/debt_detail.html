@@ -1,6 +1,23 @@
-<p></p>{{ debt.id }}
-<p></p>{{ debt.debtor_name }}
-<p></p>{{ debt.description }}
-<p></p>{{ debt.user.username }}
-<p></p>{{ debt.prise }}
-<a href="{% url 'core:debt-update' debt.id %}">Змінити борг</a>
+{% extends "base/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Debt detail" %}{% endblock %}
+
+{% block content %}
+
+    <h1>{% trans "Debt detail" %}</h1>
+
+    <p>{{ debt.debtor_name }}</p>
+    <p>{{ debt.description }}</p>
+    <p>{{ debt.prise }}</p>
+    <a href="{% url 'core:debt-update' debt.id %}">{% trans "Change debt" %}</a>
+
+    <a onclick='return confirm("Are you sure you want to delete Debt?");'>
+        <form method="post" action="{% url 'core:debt-delete' debt.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm ml-3">{% trans "Delete" %}</button>
+        </form>
+    </a>
+
+{% endblock %}

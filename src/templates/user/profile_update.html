@@ -1,0 +1,19 @@
+{% extends "base/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Update profile" %}{% endblock %}
+
+{% block content %}
+
+    <h1>{% trans "Update profile" %}</h1>
+
+    <form action="{% url "profile-update" %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ data }}
+        <button type="submit">{% trans "Update" %}</button>
+
+    </form>
+
+{% endblock %}
