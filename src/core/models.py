@@ -41,7 +41,7 @@ class Category(models.Model):
     user = models.ForeignKey(get_user_model(), related_name='category', on_delete=models.CASCADE)
     name = models.CharField(_('Ім\'я'), max_length=40)
     description = models.TextField(_('Опис'), max_length=500, null=True, blank=True)
-    type = models.CharField(_('Тип'), choices=CategoryType.TYPE_CHOICES, max_length=1, default='-')
+    type = models.CharField(_('Тип'), choices=CategoryType.TYPE_CHOICES, max_length=1, default=DebtMode.LEND)
 
     class Meta:
         verbose_name = _('Категорія')

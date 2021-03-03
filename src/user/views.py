@@ -12,9 +12,6 @@ class UserListView(LoginRequiredMixin, ListView):
     context_object_name = 'users'
     paginate_by = 10
 
-    def get_queryset(self):
-        return self.model.objects.all()
-
 
 class FriendListView(LoginRequiredMixin, ListView):
     model = CustomUser

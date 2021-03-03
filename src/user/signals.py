@@ -13,6 +13,3 @@ def create_fixture_category(sender, instance, created, **kwargs):
             [Category(user=instance, name=i[0], type=i[1]) for i in CATEGORY_FIXTURE])
     else:
         pass
-
-
-post_save.connect(create_fixture_category, sender=CustomUser)
