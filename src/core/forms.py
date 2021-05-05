@@ -1,5 +1,5 @@
 from django import forms
-from core.models import Debt, Category, Transaction
+from .models import Debt, Category, Transaction
 
 
 class UserHiddenInput(forms.ModelForm):

@@ -2,8 +2,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 
-from user.forms import ProfileUpdateForm
-from user.models import CustomUser
+from .forms import ProfileUpdateForm
+from .models import CustomUser
 
 
 class UserListView(LoginRequiredMixin, ListView):

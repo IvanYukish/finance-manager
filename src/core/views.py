@@ -7,8 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView, ListView, CreateView, DeleteView, UpdateView, DetailView
 from django.views.generic.base import View
 
-from core.forms import DebtForm, CategoryForm, TransactionForm
-from core.models import Debt, Category, Transaction
+from .forms import DebtForm, CategoryForm, TransactionForm
+from .models import Debt, Category, Transaction
 
 
 class HomeView(TemplateView):

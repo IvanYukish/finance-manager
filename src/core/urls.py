@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from core.views import HomeView, DebtsListView, DebtsCreateView, DebtsUpdateView, DebtsSynchronizeView, DebtsDetailView, \
+from .views import HomeView, DebtsListView, DebtsCreateView, DebtsUpdateView, DebtsSynchronizeView, DebtsDetailView, \
     DebtsDeleteView, CategoryCreateView, CategoryListView, CategoryUpdateView, CategoryDeleteView, TransactionListView, \
     TransactionCreateView, TransactionUpdateView, TransactionDeleteView
 
