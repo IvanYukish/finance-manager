@@ -6,8 +6,8 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
-from core.constants import DebtMode, CategoryType
-from user.models import CustomUser
+from .constants import DebtMode, CategoryType
+# from src.user.models import CustomUser
 
 
 class AbstractDateTimeModel(models.Model):

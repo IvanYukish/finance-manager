@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView, ListView, CreateView, DeleteView, UpdateView, DetailView
 from django.views.generic.base import View
+from django.core.paginator import Paginator
+
 
 from .forms import DebtForm, CategoryForm, TransactionForm
 from .models import Debt, Category, Transaction
@@ -18,8 +20,17 @@ class HomeView(TemplateView):
 
 class DebtsListView(LoginRequiredMixin, ListView):
     model = Debt
+    paginator = Paginator(model, 20)
     template_name = 'core/debt_list.html'
     context_object_name = 'debts'
+
+    def listing(request):
+        lists = Debt.objects.all()
+        paginator = Paginator(lists, 20)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'core/debt_list.html', {'page_obj': page_obj})
+
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)

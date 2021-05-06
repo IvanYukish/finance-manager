@@ -5,8 +5,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from user.utils import path_and_rename
-from user.validators import phone_validator
+from .utils import path_and_rename
+from .validators import phone_validator
 
 
 class UserManager(BaseUserManager):

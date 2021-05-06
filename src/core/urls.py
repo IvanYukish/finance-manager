@@ -8,7 +8,7 @@ app_name = "core"
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
-    path('debts', DebtsListView.as_view(), name='debt-list'),
+    path('debts/', DebtsListView.as_view(), name='debt-list'),
     path('debts/create', DebtsCreateView.as_view(), name='debt-create'),
     path('debts/synchronize', DebtsSynchronizeView.as_view(), name='debt-synchronize'),
     path('debts/<int:id>', DebtsDetailView.as_view(), name='debt-detail'),
