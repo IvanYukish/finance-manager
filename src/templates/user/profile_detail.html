@@ -5,6 +5,7 @@
 {% block head_title %}{% trans "Profile" %}{% endblock %}
 
 {% block content %}
+    <div style="min-height: 500px">
     <h1>{% trans "Profile detail" %}</h1>
     {% if user.avatar %}
         <img src="{{ user.avatar.url }}" alt="Profile Avatar">
@@ -16,4 +17,5 @@
     <h3>{{ user.email }}</h3>
     <h3>{{ user.phone_number }}</h3>
     <h3>{{ user.last_login }}</h3>
+    </div>
 {% endblock %}
