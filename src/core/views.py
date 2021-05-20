@@ -96,7 +96,9 @@ class DebtsUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView, Succe
         return self.request.user == self.get_object().user
 
 
+
 class DebtsSynchronizeView(View):
+    # синхронізувати борги
     pass
 
 

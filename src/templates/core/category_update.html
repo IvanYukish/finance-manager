@@ -6,12 +6,33 @@
 
 {% block content %}
 
-    <h1>{% trans "Update category" %}</h1>
-
-    <form action="{% url "core:category-update" category.id %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">{% trans "Update" %}</button>
-    </form>
+    <section class="u-align-center u-clearfix u-white u-section-3" id="carousel_b46a">
+        <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+            <h2 class="u-text u-text-1">{% trans "Update category" %}</h2>
+            <div class="u-align-center u-expanded-width-xs u-form u-form-1">
+                <form method="POST" action="{% url "core:category-update" category.id %}"
+                      class="u-clearfix u-form-spacing-18 u-form-vertical u-inner-form" style="padding: 0px;">
+                    {% csrf_token %}
+                    {{ form.user }}
+                    <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-1">
+                        {{ form.name }}
+                    </div>
+                    <div class="u-form-email u-form-group u-form-partition-factor-2 u-form-group-2">
+                        {{ form.type }}
+                    </div>
+                    <div class="u-form-group u-form-group-3">
+                        {{ form.description }}
+                    </div>
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
+                    <div class="u-align-center u-form-group u-form-submit u-form-group-6">
+                        <a class="u-active-palette-2-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-3-base u-palette-2-base u-radius-50 u-btn-1">{% trans "Update" %}</a>
+                        <input type="submit" class="u-form-control-hidden u-grey-5">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

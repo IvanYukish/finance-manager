@@ -6,16 +6,41 @@
 
 {% block content %}
 
-    <h1>{% trans "Update transaction" %}</h1>
+ <section class="u-align-center u-clearfix u-white u-section-3" id="carousel_b46a">
+        <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+            <h2 class="u-text u-text-1">{% trans "Update transaction" %}</h2>
+            <div class="u-align-center u-expanded-width-xs u-form u-form-1">
+                <form action="{% url 'core:transaction-update' transaction.id %}" method="POST"
+                      class="u-clearfix u-form-spacing-18 u-form-vertical u-inner-form" style="padding: 0px;">
 
+                     {% csrf_token %}
 
-    <form method="POST" action="{% url 'core:transaction-update' transaction.id %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-        {% endif %}
-        <button class="primaryAction" type="submit">{% trans "Update transaction" %}</button>
-    </form>
+                    <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-1">
 
+                        {{ form.description }}
+
+                    </div>
+                    <div class="u-form-email u-form-group u-form-partition-factor-2 u-form-group-2">
+                     <label for="id_prise" class="u-form-control u-label  u-label-1" >{{ form.prise.label }}</label>
+
+                        {{ form.prise }}
+
+                     <label for="id_category" class="u-form-control u-label  u-label-1" >{{ form.category.label }}</label>
+
+                        {{ form.category }}
+
+                    </div>
+
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
+
+                    <div class="u-align-center u-form-group u-form-submit u-form-group-6">
+                        <a class="u-active-palette-2-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-3-base u-palette-2-base u-radius-50 u-btn-1">{% trans "Update transaction" %}</a>
+                        <input type="submit" value="submit" class="u-form-control-hidden u-grey-5" wfd-invisible="true">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 {% endblock %}
