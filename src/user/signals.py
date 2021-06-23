@@ -11,5 +11,3 @@ def create_fixture_category(sender, instance, created, **kwargs):
     if created:
         Category.objects.bulk_create(
             [Category(user=instance, name=i[0], type=i[1]) for i in CATEGORY_FIXTURE])
-    else:
-        pass

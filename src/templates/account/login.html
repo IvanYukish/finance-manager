@@ -1,46 +1,62 @@
-{% extends "base/base.html" %}
+{% extends "account/account_base.html" %}
 
 {% load i18n %}
 {% load account socialaccount %}
-
+{% load widget_tweaks %}
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
-{% block content %}
-
-    <h1>{% trans "Sign In" %}</h1>
-
-    {% get_providers as socialaccount_providers %}
-
-    {% if socialaccount_providers %}
-        <p>{% blocktrans with site.name as site_name %}Please sign in with one
-            of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-            for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
-        <div class="socialaccount_ballot">
-
-            <ul class="socialaccount_providers">
-                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-            </ul>
-
-            <div class="login-or">{% trans 'or' %}</div>
-
+{% block account_content %}
+    <!-- Nested Row within Card Body -->
+    <div class="row">
+        {% get_providers as socialaccount_providers %}
+        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+        <div class="col-lg-6">
+            <div class="p-5">
+                <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                </div>
+                <form class="user" method="POST" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    {% for error in form.non_field_errors %}
+                        <p class="text-danger">{{ error }}</p>
+                    {% endfor %}
+                    <div class="form-group">
+                        {% render_field form.login class+="form-control form-control-user" placeholder="Enter Email Address..." %}
+                    </div>
+                    <div class="form-group">
+                        <p>{{ form.password.errors }}</p>
+                        {% render_field form.password class+="form-control form-control-user" placeholder="Enter Email Address..." %}
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox small">
+                            {% render_field form.remember class+="custom-control-input" id="customCheck" %}
+                            <label class="custom-control-label" for="customCheck">Remember
+                                Me</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Login
+                    </button>
+                    <hr>
+                    {% for provider in socialaccount_providers %}
+                        <a href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"
+                           class="btn btn-google btn-user btn-block">
+                            <i class="fab fa-google fa-fw"></i> Login with Google
+                        </a>
+                    {% endfor %}
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}"
+                               value="{{ redirect_field_value }}"/>
+                    {% endif %}
+                </form>
+                <hr>
+                <div class="text-center">
+                    <a class="small" href="{% url 'account_reset_password' %}">Forgot Password?</a>
+                </div>
+                <div class="text-center">
+                    <a class="small" href="{{ signup_url }}">Create an Account!</a>
+                </div>
+            </div>
         </div>
-
-        {% include "socialaccount/snippets/login_extra.html" %}
-
-    {% else %}
-        <p>{% blocktrans %}If you have not created an account yet, then please
-            <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-    {% endif %}
-
-    <form class="login" method="POST" action="{% url 'account_login' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-        {% endif %}
-        <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-        <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-    </form>
-
+    </div>
 {% endblock %}

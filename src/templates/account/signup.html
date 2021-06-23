@@ -1,22 +1,81 @@
-{% extends "base/base.html" %}
+{% extends "account/account_base.html" %}
+{% load socialaccount %}
 
 {% load i18n %}
+{% load widget_tweaks %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block content %}
-    <h1>{% trans "Sign Up" %}</h1>
+{% block account_content %}
+    {#    {% get_providers as socialaccount_providers %}#}
+    <div class="row">
+        <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+        <div class="col-lg-7">
+            <div class="p-5">
+                <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                </div>
+                <form class="user" method="post" action="{% url 'account_signup' %}">
+                    {% csrf_token %}
+                    {% for error in form.non_field_errors %}
+                        <p class="text-danger">{{ error }}</p>
+                    {% endfor %}
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            {% if form.first_name.errors %}
+                                {{ form.first_name.errors }}
+                            {% endif %}
+                            {% render_field form.first_name class+="form-control form-control-user" placeholder="First Name" %}
+                        </div>
+                        <div class="col-sm-6">
+                            {% if form.last_name.errors %}
+                                {{ form.last_name.errors }}
+                            {% endif %}
+                            {% render_field form.last_name class+="form-control form-control-user" placeholder="Last Name" %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {% if form.email.errors %}
+                            {{ form.email.errors }}
+                        {% endif %}
+                        {% render_field form.email class+="form-control form-control-user" placeholder="Email" %}
+                    </div>
+                    <div class="form-group row">
+                        {% if form.password2.errors %}
+                            {{ form.password2.errors }}
+                        {% endif %}
 
-    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-    </p>
-
-    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-        {% endif %}
-        <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-    </form>
-
+                        {% if form.password1.errors %}w
+                            {{ form.password1.errors }}
+                        {% endif %}
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            {% render_field form.password1 class+="form-control form-control-user" placeholder="Password" %}
+                        </div>
+                        <div class="col-sm-6">
+                            {% render_field form.password2 class+="form-control form-control-user" placeholder="Repeat Password" %}
+                        </div>
+                    </div>
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Register Account
+                    </button>
+                    {#                    <hr>#}
+                    {#TODO#}
+                    {#                    <a href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"#}
+                    {#                       class="btn btn-google btn-user btn-block">#}
+                    {#                        <i class="fab fa-google fa-fw"></i> Register with Google#}
+                    {#                    </a>#}
+                </form>
+                <hr>
+                <div class="text-center">
+                    <a class="small" href="{% url 'account_reset_password' %}">Forgot Password?</a>
+                </div>
+                <div class="text-center">
+                    <a class="small" href="{% url 'account_login' %}">Already have an account? Login!</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

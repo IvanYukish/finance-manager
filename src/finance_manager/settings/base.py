@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'user',
     'core',
-    'django.contrib.sites',
+
+    'widget_tweaks',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
