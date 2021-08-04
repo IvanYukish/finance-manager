@@ -1,8 +1,8 @@
-from django.urls import path, include
+from django.urls import path
 
 from core.views import HomeView, DebtsListView, DebtsCreateView, DebtsUpdateView, DebtsSynchronizeView, DebtsDetailView, \
     DebtsDeleteView, CategoryCreateView, CategoryListView, CategoryUpdateView, CategoryDeleteView, TransactionListView, \
-    TransactionCreateView, TransactionUpdateView, TransactionDeleteView
+    TransactionCreateView, TransactionUpdateView, TransactionDeleteView, TestPage
 
 app_name = "core"
 
@@ -24,4 +24,7 @@ urlpatterns = [
     path('transaction/create', TransactionCreateView.as_view(), name='transaction-create'),
     path('transaction/<int:id>/update', TransactionUpdateView.as_view(), name='transaction-update'),
     path('transaction/<int:id>/delete', TransactionDeleteView.as_view(), name='transaction-delete'),
+
+    # TODO remove it when app will in production
+    path('<str:page_name>', TestPage.as_view(), name='test-page')
 ]

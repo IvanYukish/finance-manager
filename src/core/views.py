@@ -1,6 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
+from django.http import Http404
+from django.template import TemplateDoesNotExist
+from django.template.loader import get_template
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -195,3 +198,17 @@ class TransactionDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView,
 
     def test_func(self):
         return self.request.user == self.get_object().category.user
+
+
+class TestPage(TemplateView):
+
+    @property
+    def template_name(self):
+        template_path = f'test_pages/{self.request.path}'
+
+        try:
+            get_template(template_path)
+        except TemplateDoesNotExist:
+            raise Http404('Template with this name does not exists')
+
+        return template_path
