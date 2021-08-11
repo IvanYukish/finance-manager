@@ -26,11 +26,14 @@
 
 {% block content %}
 {% endblock %}
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- nice alert window -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     {% block extra_js %}{% endblock %}
     <!-- Bootstrap core JavaScript-->
-    <!-- Bootstrap core JavaScript-->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     <!-- Core plugin JavaScript-->
@@ -38,6 +41,5 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
-
 
 </html>
