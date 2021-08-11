@@ -26,14 +26,15 @@ env = environ.Env()
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
 DEBUG = env.bool('DEBUG', default=True)
 
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', default='*')]
 
 AUTH_USER_MODEL = 'user.CustomUser'
-# Application definition
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
