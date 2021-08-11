@@ -58,13 +58,6 @@ class DebtsCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def get_initial(self):
         return {'user': self.request.user}
 
-    def get_context_data(self, **kwargs):
-        context = super(DebtsCreateView, self).get_context_data(**kwargs)
-        return context
-
-    def form_valid(self, form):
-        return super(DebtsCreateView, self).form_valid(form)
-
 
 class DebtsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Debt
@@ -200,6 +193,7 @@ class TransactionDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView,
         return self.request.user == self.get_object().category.user
 
 
+# TODO remove it when app will ready to production
 class TestPage(TemplateView):
 
     @property
