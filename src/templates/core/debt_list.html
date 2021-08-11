@@ -1,10 +1,16 @@
-{% extends "base/base.html" %}
+{% extends "base/main_content.html" %}
 
 {% load i18n %}
+{% load static %}
+{% load widget_tweaks %}
 
 {% block head_title %}{% trans "Debt list" %}{% endblock %}
 
-{% block content %}
+{% block extra_css %}
+    <link href="{% static 'css/custom/card.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
 
     <h1>{% trans "Debt list" %}</h1>
 

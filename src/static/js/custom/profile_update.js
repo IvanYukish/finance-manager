@@ -22,7 +22,7 @@ $("#profileUpdateForm").submit(function (event) {
                 )
             },
             error: function (response) {
-                //TODO show errors
+                //TODO provide validation for user update fields
                 let errors = response.responseJSON.errors
                 for (const errorsKey in errors) {
                     if (errors.hasOwnProperty(errorsKey)) {
