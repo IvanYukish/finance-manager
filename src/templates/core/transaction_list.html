@@ -1,38 +1,86 @@
-{% extends "base/base.html" %}
+{% extends "base/base_card.html" %}
 
 {% load i18n %}
-
+{% load static %}
 {% block head_title %}{% trans "Transaction list" %}{% endblock %}
+{% block extra_css %}
+    <link href="{% static 'css/custom/card.css' %}" rel="stylesheet">
+{% endblock %}
+{% block card %}
+    <div class="col-lg-12 d-flex justify-content-center mt-3">
+        <h1>{% trans "Transaction list" %}</h1>
+    </div>
+    <div class="col-lg-12  m-3">
+        {% for transaction in transactions %}
+            <div class="btn-hide">
+                <p>
+                    {{ transaction.category }}
+                    {{ transaction.description }}
+                    {{ transaction.prise }} рупій
+                </p>
 
-{% block content %}
 
-    <h1>{% trans "Transaction list" %}</h1>
+                <div class="container d-flex align-items-center ">
+                    <a type="button" class="btn btn-outline-dark btn-sm ml-3"
+                       href="{% url 'core:transaction-update' transaction.id %}">{% trans "Update transaction" %}</a>
 
-    {% for transaction in transactions %}
-        <p>
-            {{ transaction.category }} --
-            {{ transaction.description }} --
-            {{ transaction.prise }} -- рупій
-        </p>
-        <div class="container align-items-center">
-            <a type="button" class="btn btn-default btn-sm ml-3"
-               href="{% url 'core:transaction-update' transaction.id %}">{% trans "Update transaction" %}</a>
-
-            <a onclick='return confirm("Are you sure you want to delete Transaction?");'>
-                <div class="col-xs-1">
-                    <form method="post" action="{% url 'core:transaction-delete' transaction.id %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger btn-sm ml-3">{% trans "Delete" %}</button>
-                    </form>
+                    <a onclick='return confirm("Are you sure you want to delete transaction?");'>
+                        <div class="col-xs-1">
+                            <form method="post" action="{% url 'core:transaction-delete' transaction.id %}">
+                                {% csrf_token %}
+                                <button type="submit"
+                                        class="btn btn-outline-danger btn-sm ml-3">{% trans "Delete" %}</button>
+                            </form>
+                        </div>
+                    </a>
                 </div>
-            </a>
+                <hr>
+            </div>
+        {% endfor %}
+        <div class="d-flex flex-column justify-content-center">
+            <a type="button" class="btn btn-success  btn-sm m-3"
+               href="{% url 'core:transaction-create' %}">{% trans "Create new Transaction" %}</a>
+            {{ data }}
         </div>
-    {% endfor %}
-
-    <br>
-
-    <a type="button" class="btn btn-success btn-sm ml-3"
-       href="{% url 'core:transaction-create' %}">{% trans "Create new Transaction" %}</a>
-    {{ data }}
+    </div>
 
 {% endblock %}
+
+{#{% extends "base/base.html" %}#}
+{##}
+{#{% load i18n %}#}
+{##}
+{#{% block head_title %}{% trans "Transaction list" %}{% endblock %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#    <h1>{% trans "Transaction list" %}</h1>#}
+{##}
+{#    {% for transaction in transactions %}#}
+{#        <p>#}
+{#            {{ transaction.category }} --#}
+{#            {{ transaction.description }} --#}
+{#            {{ transaction.prise }} -- рупій#}
+{#        </p>#}
+{#        <div class="container align-items-center">#}
+{#            <a type="button" class="btn btn-default btn-sm ml-3"#}
+{#               href="{% url 'core:transaction-update' transaction.id %}">{% trans "Update transaction" %}</a>#}
+{##}
+{#            <a onclick='return confirm("Are you sure you want to delete Transaction?");'>#}
+{#                <div class="col-xs-1">#}
+{#                    <form method="post" action="{% url 'core:transaction-delete' transaction.id %}">#}
+{#                        {% csrf_token %}#}
+{#                        <button type="submit" class="btn btn-danger btn-sm ml-3">{% trans "Delete" %}</button>#}
+{#                    </form>#}
+{#                </div>#}
+{#            </a>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{##}
+{#    <br>#}
+{##}
+{#    <a type="button" class="btn btn-success btn-sm ml-3"#}
+{#       href="{% url 'core:transaction-create' %}">{% trans "Create new Transaction" %}</a>#}
+{#    {{ data }}#}
+{##}
+{#{% endblock %}#}

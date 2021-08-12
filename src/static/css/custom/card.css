@@ -28,3 +28,11 @@
 .form-input-height {
     height: calc(1.5em + .75rem + 15px);
 }
+
+.btn-hide div {
+    opacity: .3;
+}
+
+.btn-hide:hover div {
+    opacity: 1;
+}
