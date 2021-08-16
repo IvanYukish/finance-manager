@@ -25,24 +25,47 @@
                         {{ category.description }}
                     {% endif %}
                 </p>
+
+
                 <div class="container d-flex align-items-center ">
                     <a type="button" class="btn btn-outline-dark btn-sm ml-3"
                        href="{% url 'core:category-update' category.id %}">{% trans "Update category" %}</a>
-                    <a onclick='return confirm("Are you sure you want to delete Category?");'>
-                        <div class="col-xs-1">
-                            <form method="post" action="{% url 'core:category-delete' category.id %}">
-                                {% csrf_token %}
-                                <button type="submit"
-                                        class="btn btn-outline-danger btn-sm ml-3">{% trans "Delete" %}</button>
-                            </form>
-                        </div>
-                    </a>
+                    <button type="button" class="btn btn-danger  btn-sm ml-3 mr-3" data-toggle="modal"
+                            data-target="#exampleModalCenter{{ category.id }}">
+                        {% trans "Delete" %}
+                    </button>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter{{ category.id }}" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">{% trans "Are you sure?" %}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{ category.name|title }} {% trans " will be deleted." %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">{% trans "Close" %}</button>
+                                <form method="post" action="{% url 'core:category-delete' category.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit"
+                                            class="btn btn-danger">{% trans "Delete" %}</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <hr>
             </div>
         {% endfor %}
-
-        <br>
     </div>
     <div class="d-flex flex-column justify-content-center m-3">
         <a type="button" class="btn btn-primary btn-sm "
