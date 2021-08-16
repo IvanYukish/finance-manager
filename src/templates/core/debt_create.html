@@ -4,20 +4,14 @@
 {% load widget_tweaks %}
 {% block head_title %}{% trans "Add debtor" %}
 {% endblock %}
+
 {% block card %}
     <div class="col-lg-12 d-flex justify-content-center mt-3">
         <h1>{% trans "Add debtor" %}</h1>
     </div>
- <form action="{% url 'core:debt-create' %}" method="post" class="card-body" id="profileUpdateForm">
+    <form action="{% url 'core:debt-create' %}" method="post" class="card-body" id="profileUpdateForm">
         {% csrf_token %}
-        {% for field in form %}
-            <div class="row mb-3 justify-content-center">
-                <div class="col-sm-9 text-secondary">
-                    {{ field }}
-                </div>
-            </div>
-        {% endfor %}
-
+        {% include 'base/snippets/fields_debt.html' %}
         <div class="row justify-content-center">
             <div class="col-sm-9 mb-3 text-secondary">
                 <button type="submit" class="btn btn-primary px-4">{% trans "Add debt" %}</button>

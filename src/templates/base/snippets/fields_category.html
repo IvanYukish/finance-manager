@@ -1,0 +1,18 @@
+{% load widget_tweaks %}
+{% csrf_token %}
+{% render_field form.user %}
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.name class="form-control form-input-height" placeholder="Category name" required="True" %}
+    </div>
+</div>
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.type class="form-control form-input-height" %}
+    </div>
+</div>
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.description rows="5" class="form-control form-input-height" placeholder="Description" %}
+    </div>
+</div>

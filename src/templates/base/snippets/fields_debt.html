@@ -1,0 +1,43 @@
+{% load widget_tweaks %}
+{% csrf_token %}
+{% render_field form.user %}
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.debtor_name class="form-control form-input-height" placeholder="Debtor name" required="True" %}
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.mode class="form-control form-input-height" %}
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.prise class="form-control form-input-height" placeholder="Prise" %}
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.description rows="5" class="form-control form-input-height" placeholder="Description" %}
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+    </div>
+</div>

@@ -1,27 +1,25 @@
 {% extends "base/base_card.html" %}
-
 {% load i18n %}
-
 {% block head_title %}{% trans "Debt detail" %}{% endblock %}
 
 {% block card %}
- <div class="col-lg-12 d-flex justify-content-center mt-3">
-    <h1>{% trans "Debt detail" %}</h1>
+    <div class="col-lg-12 d-flex justify-content-center mt-3">
+        <h1>{% trans "Debt detail" %}</h1>
     </div>
     <div class="col-lg-12  m-3">
-    <h4>{{ debt.debtor_name |title}}</h4>
-    <p>{{ debt.description|linebreaksbr}}</p>
-    <p>{{ debt.prise }}$</p>
+        <h4>{{ debt.debtor_name |title }}</h4>
+        <p>{{ debt.description|linebreaksbr }}</p>
+        <p>{{ debt.prise }}$</p>
     </div>
     <div class="col-lg-12 d-flex justify-content-center m-3">
-    <a class="btn btn-primary btn-sm" href="{% url 'core:debt-update' debt.id %}">{% trans "Edit" %}</a>
+        <a class="btn btn-primary btn-sm" href="{% url 'core:debt-update' debt.id %}">{% trans "Edit" %}</a>
 
-    <a onclick='return confirm("Are you sure you want to delete Debt?");'>
-        <form method="post" action="{% url 'core:debt-delete' debt.id %}">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger btn-sm ml-3 mr-3">{% trans "Delete" %}</button>
-        </form>
-    </a>
-    <a class="btn btn-outline-dark btn-sm" href="{% url 'core:debt-list' %}">{% trans "Back" %}</a>
+        <a onclick='return confirm("Are you sure you want to delete Debt?");'>
+            <form method="post" action="{% url 'core:debt-delete' debt.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm ml-3 mr-3">{% trans "Delete" %}</button>
+            </form>
+        </a>
+        <a class="btn btn-outline-dark btn-sm" href="{% url 'core:debt-list' %}">{% trans "Back" %}</a>
     </div>
 {% endblock %}

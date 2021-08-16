@@ -6,6 +6,7 @@
 {% block extra_css %}
     <link href="{% static 'css/custom/card.css' %}" rel="stylesheet">
 {% endblock %}
+
 {% block card %}
     <div class="col-lg-12 d-flex justify-content-center mt-3">
         <h1>{% trans "Category list" %}</h1>
@@ -14,42 +15,41 @@
 
         {% for category in categories %}
             <div class="btn-hide">
-            <p> {{ category.name }}
-                {% if category.type == '-' %}
-                    ({% trans "Cost" %})
-                {% else %}
-                    ({% trans "Income" %})
-                {% endif %}
-                {% if category.description %}
-                    {{ category.description }}
-                {% endif %}
-            </p>
-            <div class="container d-flex align-items-center ">
-                <a type="button" class="btn btn-outline-dark btn-sm ml-3"
-                   href="{% url 'core:category-update' category.id %}">{% trans "Update category" %}</a>
-
-                <a onclick='return confirm("Are you sure you want to delete Category?");'>
-                    <div class="col-xs-1">
-                        <form method="post" action="{% url 'core:category-delete' category.id %}">
-                            {% csrf_token %}
-                            <button type="submit"
-                                    class="btn btn-outline-danger btn-sm ml-3">{% trans "Delete" %}</button>
-                        </form>
-                    </div>
-                </a>
-            </div>
-            <hr>
+                <p> {{ category.name }}
+                    {% if category.type == '-' %}
+                        ({% trans "Cost" %})
+                    {% else %}
+                        ({% trans "Income" %})
+                    {% endif %}
+                    {% if category.description %}
+                        {{ category.description }}
+                    {% endif %}
+                </p>
+                <div class="container d-flex align-items-center ">
+                    <a type="button" class="btn btn-outline-dark btn-sm ml-3"
+                       href="{% url 'core:category-update' category.id %}">{% trans "Update category" %}</a>
+                    <a onclick='return confirm("Are you sure you want to delete Category?");'>
+                        <div class="col-xs-1">
+                            <form method="post" action="{% url 'core:category-delete' category.id %}">
+                                {% csrf_token %}
+                                <button type="submit"
+                                        class="btn btn-outline-danger btn-sm ml-3">{% trans "Delete" %}</button>
+                            </form>
+                        </div>
+                    </a>
+                </div>
+                <hr>
             </div>
         {% endfor %}
 
         <br>
     </div>
-<div class="d-flex flex-column justify-content-center m-3">
-    <a type="button" class="btn btn-primary btn-sm "
-       href="{% url 'core:category-create' %}">{% trans "Create new category" %}</a>
+    <div class="d-flex flex-column justify-content-center m-3">
+        <a type="button" class="btn btn-primary btn-sm "
+           href="{% url 'core:category-create' %}">{% trans "Create new category" %}</a>
 
-    <a type="button" class="btn btn-success btn-sm "
-       href="{% url 'core:transaction-create' %}">{% trans "Create new Transaction" %}</a>
-    {{ data }}
-</div>
+        <a type="button" class="btn btn-success btn-sm "
+           href="{% url 'core:transaction-create' %}">{% trans "Create new Transaction" %}</a>
+        {{ data }}
+    </div>
 {% endblock %}

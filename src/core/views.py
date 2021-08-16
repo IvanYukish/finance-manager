@@ -155,7 +155,6 @@ class TransactionListView(LoginRequiredMixin, ListView):
         return self.model.objects.filter(category__user=self.request.user)
 
 
-
 class TransactionCreateView(LoginRequiredMixin, CreateView, SuccessMessageMixin):
     model = Transaction
     form_class = TransactionForm

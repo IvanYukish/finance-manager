@@ -9,15 +9,7 @@
         <h1>{% trans "Update debt" %}</h1>
     </div>
     <form action="{% url "core:debt-update" debt.id %}" method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            <div class="row mb-3 justify-content-center">
-                <div class="col-sm-9 text-secondary">
-                    {{ field }}
-                </div>
-            </div>
-        {% endfor %}
-
+        {% include 'base/snippets/fields_debt.html' %}
         <div class="row justify-content-center">
             <div class="col-sm-9 mb-3 text-secondary">
                 <button class="btn btn-primary px-4" type="submit">{% trans "Update" %}</button>
