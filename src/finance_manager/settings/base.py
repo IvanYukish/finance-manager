@@ -17,7 +17,7 @@ root = environ.Path(__file__) - 4
 
 SITE_ROOT = root()
 BASE_DIR = os.path.join(SITE_ROOT, 'src')
-environ.Env.read_env(f'{root}/.env')
+#environ.Env.read_env(f'{root}/.env')
 env = environ.Env()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/

@@ -14,7 +14,7 @@ ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev zlib-dev jpeg-dev
+    && apk add postgresql-dev gcc python3-dev musl-dev zlib-dev jpeg-dev libressl-dev libffi-dev
 
 
 # lint
@@ -48,7 +48,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 # install dependencies
-RUN apk update && apk add libpq
+RUN apk update && apk add libpq gcc musl-dev python3-dev libffi-dev openssl-dev cargo
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
@@ -68,4 +68,4 @@ USER app
 WORKDIR ./src
 
 # run entrypoint.prod.sh
-ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
+ENTRYPOINT ["bash","/home/app/web/entrypoint.prod.sh"]
