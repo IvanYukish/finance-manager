@@ -68,4 +68,4 @@ USER app
 WORKDIR ./src
 
 # run entrypoint.prod.sh
-ENTRYPOINT ["bash","/home/app/web/entrypoint.prod.sh"]
+ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
