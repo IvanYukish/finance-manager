@@ -48,7 +48,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 # install dependencies
-RUN apk update && apk add libpq gcc musl-dev python3-dev libffi-dev openssl-dev cargo
+RUN apk update && apk add libpq gcc musl-dev python3-dev libffi-dev openssl-dev cargo jpeg-dev zlib-dev libjpeg
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --no-cache /wheels/*
