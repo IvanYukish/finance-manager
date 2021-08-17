@@ -1,5 +1,3 @@
-import uuid
-
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
@@ -20,8 +18,8 @@ class AbstractDateTimeModel(models.Model):
 
 class Debt(AbstractDateTimeModel):
     user = models.ForeignKey(get_user_model(), related_name='debt', on_delete=models.CASCADE)
-    debtor_name = models.CharField(_('Ім\'я'), max_length=100)
-    mode = models.CharField(_('Модифікатор'), choices=DebtMode.MODE_CHOICES, max_length=1, default='-')
+    debtor_name = models.CharField(_('Ім\'я'), max_length=100, blank=True, null=True)
+    mode = models.CharField(_('Модифікатор'), choices=DebtMode.MODE_CHOICES, max_length=1, default=DebtMode.LEND)
     prise = models.PositiveIntegerField(_('Значення'))
     description = models.CharField(_('Опис'), max_length=500)
     debt_time = models.DateTimeField(_('Час зміни'), default=timezone.now)
@@ -41,7 +39,7 @@ class Category(models.Model):
     user = models.ForeignKey(get_user_model(), related_name='category', on_delete=models.CASCADE)
     name = models.CharField(_('Ім\'я'), max_length=40)
     description = models.TextField(_('Опис'), max_length=500, null=True, blank=True)
-    type = models.CharField(_('Тип'), choices=CategoryType.TYPE_CHOICES, max_length=1, default=DebtMode.LEND)
+    type = models.CharField(_('Тип'), choices=CategoryType.TYPE_CHOICES, max_length=1, default=CategoryType.COST)
 
     class Meta:
         verbose_name = _('Категорія')

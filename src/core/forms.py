@@ -9,6 +9,9 @@ class UserHiddenInput(forms.ModelForm):
 
 
 class DebtForm(UserHiddenInput):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['description'].widget = forms.Textarea()
     class Meta:
         model = Debt
         fields = ['user', 'debtor_name', 'mode', 'prise', 'description']
@@ -17,10 +20,14 @@ class DebtForm(UserHiddenInput):
 class CategoryForm(UserHiddenInput):
     class Meta:
         model = Category
-        fields = ['user', 'name', 'description', 'type']
+        fields = ['user', 'name', 'type', 'description']
 
 
 class TransactionForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['category'].empty_label = "Category not selected"
+
     class Meta:
         model = Transaction
-        fields = ['prise', 'description', 'category']
+        fields = ['prise', 'category', 'description']

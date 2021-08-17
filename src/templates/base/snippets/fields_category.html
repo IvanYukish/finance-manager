@@ -1,0 +1,40 @@
+{% load widget_tweaks %}
+{% csrf_token %}
+{% render_field form.user %}
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.name class="form-control form-input-height" placeholder="Category name" required="True" %}
+        {% if form.name.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.name.errors }}
+            </div>
+        {% endif %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.type class="form-control form-input-height" %}
+        {% if form.type.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.type.errors }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.description rows="5" class="form-control form-input-height" placeholder="Description" %}
+        {% if form.description.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.description.errors }}
+            </div>
+        {% endif %}
+    </div>
+</div>

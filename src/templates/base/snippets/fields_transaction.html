@@ -1,0 +1,42 @@
+{% load widget_tweaks %}
+{% csrf_token %}
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.prise class="form-control form-input-height" placeholder="Prise" %}
+        {% if form.prise.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.prise.errors }}
+            </div>
+        {% endif %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.category class="form-control form-input-height" %}
+        {% if form.category.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.category.errors }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="row mb-3 justify-content-center">
+    <div class="col-sm-9 text-secondary">
+        {% render_field form.description class="form-control form-input-height" placeholder="Description" %}
+        {% if form.description.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.description.errors }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+{% endif %}

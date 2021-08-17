@@ -1,6 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
+from django.http import Http404
+from django.template import TemplateDoesNotExist
+from django.template.loader import get_template
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -54,13 +57,6 @@ class DebtsCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     def get_initial(self):
         return {'user': self.request.user}
-
-    def get_context_data(self, **kwargs):
-        context = super(DebtsCreateView, self).get_context_data(**kwargs)
-        return context
-
-    def form_valid(self, form):
-        return super(DebtsCreateView, self).form_valid(form)
 
 
 class DebtsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -195,3 +191,18 @@ class TransactionDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView,
 
     def test_func(self):
         return self.request.user == self.get_object().category.user
+
+
+# TODO remove it when app will ready to production
+class TestPage(TemplateView):
+
+    @property
+    def template_name(self):
+        template_path = f'test_pages/{self.request.path}'
+
+        try:
+            get_template(template_path)
+        except TemplateDoesNotExist:
+            raise Http404('Template with this name does not exists')
+
+        return template_path

@@ -4,118 +4,390 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <body class="u-body">
-    <section class="u-align-center u-clearfix u-expand-resize u-image u-section-1" id="carousel_2a85">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
-                <div class="u-gutter-0 u-layout">
-                    <div class="u-layout-row">
-                        <div class="u-size-34 u-size-60-md">
-                            <div class="u-layout-col">
-                                <div class="u-size-40">
-                                    <div class="u-layout-row">
-                                        <div class="u-align-left u-container-style u-layout-cell u-left-cell u-size-60 u-layout-cell-1">
-                                            <div class="u-container-layout u-container-layout-1">
-                                                <h6 class="u-text u-text-palette-2-dark-2 u-text-1">Фінанс Менеджер</h6>
-                                                <h1 class="u-text u-title u-text-2">Веб<br>Додаток
-                                                </h1>
+    <body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        {% include 'base/blocks/sidebar.html' %}
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                {% include 'base/blocks/topbar.html' %}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Earnings (Monthly)
                                             </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="u-size-20">
-                                    <div class="u-layout-row">
-                                        <div class="u-align-center u-container-style u-layout-cell u-left-cell u-size-20 u-layout-cell-2">
-                                            <div class="u-container-layout u-valign-middle u-container-layout-2"><span
-                                                    class="u-icon u-icon-circle u-text-palette-2-base u-icon-1"><svg
-                                                    class="u-svg-link" preserveAspectRatio="xMidYMin slice"
-                                                    viewBox="0 0 64 64" style=""><use
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                    xlink:href="#svg-064b"></use></svg><svg
-                                                    xmlns="http://www.w3.org/2000/svg" id="svg-064b"
-                                                    enable-background="new 0 0 64 64" viewBox="0 0 64 64"
-                                                    class="u-svg-content"><path
-                                                    d="m42 1c-7.878 0-15.114 4.469-18.689 11.444-1.059-.28-2.165-.444-3.311-.444-7.168 0-13 5.832-13 13v6c0 2.206 1.794 4 4 4h1.739c.833 1.47 1.937 2.78 3.261 3.847v1.242c0 .773-.453 1.485-1.154 1.812l-7.498 3.499c-3.856 1.8-6.348 5.713-6.348 9.969v7.631h38v-7.631c0-4.256-2.492-8.168-6.348-9.968l-7.498-3.499c-.701-.327-1.154-1.039-1.154-1.813v-1.242c.959-.773 1.803-1.673 2.513-2.669 3.977 4.35 9.547 6.822 15.487 6.822 11.58 0 21-9.42 21-21s-9.42-21-21-21zm-22 13c6.065 0 11 4.935 11 11v2.556c-.591-.344-1.268-.556-2-.556v-2h-4.169c-3.633 0-7.201-.988-10.316-2.857l-.818-.491-2.697 4.045v1.303c-.732 0-1.409.212-2 .556v-2.556c0-6.065 4.935-11 11-11zm10.712-1.873 2.802 2.802 1.414-1.414-2.804-2.804c2.442-2.133 5.549-3.452 8.876-3.674v3.963h2v-3.949c3.383.225 6.457 1.569 8.861 3.674l-2.79 2.79 1.414 1.414 2.79-2.79c2.105 2.404 3.45 5.478 3.674 8.861h-3.949v2h3.949c-.225 3.383-1.569 6.457-3.674 8.861l-2.79-2.79-1.414 1.414 2.79 2.79c-2.404 2.105-5.478 3.45-8.861 3.674v-3.949h-2v3.951c-3.26-.214-6.313-1.463-8.782-3.597.486-.662.782-1.471.782-2.354v-6c0-3.871-1.709-7.341-4.402-9.725.577-1.149 1.288-2.205 2.114-3.148zm-1.733 16.873h.021c1.103 0 2 .897 2 2s-.897 2-2 2h-.817c.464-1.269.738-2.614.796-4zm-17.979 4c-1.103 0-2-.897-2-2s.897-2 2-2h.021c.057 1.386.331 2.731.796 4zm4.691 10.714c.136-.064.264-.141.391-.218l2.504 2.504-3.005 3.005-1.055-4.747zm4.781 4.172 1.414 13.114h-3.773l1.414-13.114.473-.472zm-17.472 7.483c0-3.482 2.039-6.683 5.194-8.156l4.476-2.089 1.749 7.871 2.854-2.854-1.171 10.859h-7.102v-6h-2v6h-4zm34 0v5.631h-4v-6h-2v6h-7.102l-1.171-10.859 2.854 2.854 1.749-7.871 4.476 2.089c3.155 1.473 5.194 4.674 5.194 8.156zm-11.526-11.111-1.055 4.747-3.005-3.005 2.504-2.504c.127.078.254.154.391.218zm-2.944-2.202-2.53 2.53-2.53-2.53c.322-.567.51-1.21.524-1.882.53.288 1.08.547 1.655.763l.351.131.351-.131c.575-.216 1.125-.475 1.655-.763.015.672.202 1.315.524 1.882zm-2.53-3.131c-4.203-1.74-7-5.899-7-10.469v-2.153l1.314-1.972c3.225 1.749 6.84 2.669 10.517 2.669h2.169v1.456c0 4.57-2.797 8.73-7 10.469zm22 2.075c-5.294 0-10.261-2.173-13.848-6h.848c.591 0 1.148-.137 1.653-.368 3.124 2.812 7.112 4.368 11.347 4.368 9.374 0 17-7.626 17-17s-7.626-17-17-17c-6.323 0-12.096 3.514-15.027 9.047-.558-.357-1.143-.675-1.755-.945 3.278-6.167 9.749-10.102 16.782-10.102 10.477 0 19 8.523 19 19s-8.523 19-19 19z"></path><path
-                                                    d="m47 21h-4v-6h-2v8h6z"></path></svg></span>
-                                                <h5 class="u-text u-text-palette-2-base u-text-3">Борги</h5>
-                                            </div>
-                                        </div>
-                                        <div class="u-align-center u-container-style u-layout-cell u-size-20 u-layout-cell-3">
-                                            <div class="u-container-layout u-valign-middle u-container-layout-3"><span
-                                                    class="u-icon u-icon-circle u-text-palette-2-base u-icon-2"><svg
-                                                    class="u-svg-link" preserveAspectRatio="xMidYMin slice"
-                                                    viewBox="0 0 295.238 295.238" style=""><use
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                    xlink:href="#svg-d5a7"></use></svg><svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                                    id="svg-d5a7" x="0px" y="0px" viewBox="0 0 295.238 295.238"
-                                                    style="enable-background:new 0 0 295.238 295.238;"
-                                                    xml:space="preserve" class="u-svg-content"><g><g><g><path d="M277.462,0.09l-27.681,20.72l-27.838,64.905h-22.386l-8.79-19.048h5.743c10.505,0,19.048-8.452,19.048-18.957V28.571     h9.524V0H196.51v28.571h9.524V47.71c0,5.248-4.271,9.433-9.524,9.433h-10.138L174.2,30.81l14.581-7.267L141.038,3.095     l-11.224,39.281c-0.305-23.371-19.386-42.29-42.829-42.29c-23.633,0-42.857,19.224-42.857,42.857     c0,14.281,7.233,27.676,19.048,35.595v7.176H51.643L50.9,89.619c-2.314,12.005-2.529,24.343-0.638,36.648l-32.486,57.905     l35.876,8.195v60.014h47.619v42.857h114.286v-66.357c33.333-23.581,52.371-61.495,52.343-101.943l0.01-17.371     c0-6.548-0.605-13.276-1.824-19.905l-0.705-3.948h-9.348l21.429-51.338V0.09z M206.033,19.138V9.614h9.524v9.524H206.033z      M189.067,85.714h-18.062l-8.657-19.048h17.929L189.067,85.714z M147.219,16.119l18.929,8.11l-4.467,2.19l14.2,30.724h-17.862     l-11.605-25.471l-4.262,2.152L147.219,16.119z M160.543,85.715h-21.176v-9.433c0-5.252,4.271-9.614,9.524-9.614h2.995v-0.001     L160.543,85.715z M141.843,44.652l5.776,12.71c-9.905,0.667-17.776,8.848-17.776,18.919v9.433h-19.048v-7.176     c9.529-6.386,15.995-16.352,18.176-27.452L141.843,44.652z M53.653,42.948c0-18.376,14.957-33.333,33.333-33.333     c18.376,0,33.333,14.957,33.333,33.333c0,11.829-6.39,22.881-16.671,28.838l-2.376,1.371v12.557h-9.524V56.352     c5.529-1.971,9.524-7.21,9.524-13.41c0-7.876-6.41-14.286-14.286-14.286c-7.876,0-14.286,6.411-14.286,14.287     c0,6.2,3.995,11.438,9.524,13.41v29.362H72.7V73.157l-2.376-1.376C60.043,65.824,53.653,54.776,53.653,42.948z M86.986,47.71     c-2.629,0-4.762-2.139-4.762-4.762c0-2.629,2.133-4.762,4.762-4.762c2.629,0,4.762,2.133,4.762,4.762S89.615,47.71,86.986,47.71z      M257.366,95.239c0.691,4.761,1.039,9.59,1.039,14.285l0.01,17.405c0.029,38.148-18.795,73.871-50.286,95.552l-2.095,1.429     v61.805h-95.238v-42.857h-47.62v-58.086l-30.862-7.043l27.876-49.7l-0.271-1.7c-1.771-10.419-1.871-21.567-0.333-31.09h3.59     h47.619H257.366z M245.714,85.714H232.3l23.738-55.343l10.557,5.257L245.714,85.714z M267.938,25.714l-5.267-2.633l5.267-3.943     V25.714z"></path><path
-                                                    d="M96.51,123.81c-7.876,0-14.286-4.762-14.286-14.286H72.7c0,14.286,10.681,23.81,23.81,23.81     c13.129,0,23.81-9.524,23.81-23.81h-9.524C110.795,119.048,104.386,123.81,96.51,123.81z"></path>
-</g>
-</g>
-</g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></span>
-                                                <h5 class="u-text u-text-palette-2-base u-text-4">Фінанси</h5>
-                                            </div>
-                                        </div>
-                                        <div class="u-align-center u-container-style u-layout-cell u-size-20 u-layout-cell-4">
-                                            <div class="u-container-layout u-valign-middle u-container-layout-4"><span
-                                                    class="u-icon u-icon-circle u-text-palette-2-base u-icon-3"><svg
-                                                    class="u-svg-link" preserveAspectRatio="xMidYMin slice"
-                                                    viewBox="0 0 512 512" style=""><use
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                    xlink:href="#svg-0b28"></use></svg><svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                                    id="svg-0b28" x="0px" y="0px" viewBox="0 0 512 512"
-                                                    style="enable-background:new 0 0 512 512;" xml:space="preserve"
-                                                    class="u-svg-content"><g id="XMLID_1362_"><g id="XMLID_177_"><path id="XMLID_214_" d="M44.173,225.773c0,50.296,40.918,91.214,91.214,91.214c46.917,0,85.667-35.606,90.663-81.214h7.11    c5.522,0,10-4.478,10-10C243.16,166.347,194.813,118,135.387,118c-5.522,0-10,4.478-10,10v7.11    C79.779,140.106,44.173,178.857,44.173,225.773z M125.387,201.631l-32.763-32.763c9.394-7.077,20.589-11.874,32.763-13.593    V201.631z M135.387,296.987c-39.268,0-71.214-31.946-71.214-71.214c0-16.035,5.331-30.846,14.309-42.763l49.834,49.834    c0.001,0.001,0.002,0.001,0.004,0.003c1.81,1.808,4.308,2.926,7.067,2.926h70.498    C201.006,270.321,171.259,296.987,135.387,296.987z M145.387,138.566c40.429,4.604,72.604,36.778,77.207,77.207h-77.207V138.566z"></path><path
-                                                    id="XMLID_961_"
-                                                    d="M476.089,54H298V10c0-5.522-4.478-10-10-10h-64c-5.522,0-10,4.478-10,10v44h-58.671    c-5.522,0-10,4.478-10,10s4.478,10,10,10h320.76C484.862,74,492,81.138,492,89.911v260.178c0,8.773-7.138,15.911-15.911,15.911    H35.911C27.138,366,20,358.862,20,350.089V89.911C20,81.138,27.138,74,35.911,74h39.257c5.522,0,10-4.478,10-10s-4.478-10-10-10    H35.911C16.109,54,0,70.109,0,89.911v260.178C0,369.891,16.109,386,35.911,386h107.793L87.084,497.472    c-1.574,3.1-1.426,6.795,0.393,9.759C89.296,510.194,92.523,512,96,512h64c3.765,0,7.211-2.114,8.916-5.472L214,417.769V502    c0,5.522,4.478,10,10,10h64c5.522,0,10-4.478,10-10v-84.231l45.084,88.759c1.705,3.357,5.151,5.472,8.916,5.472h64    c3.477,0,6.704-1.806,8.523-4.77c1.818-2.964,1.967-6.659,0.393-9.759L368.295,386h107.793C495.891,386,512,369.891,512,350.089    V89.911C512,70.109,495.891,54,476.089,54z M234,54V20h44v34H234z M153.863,492h-41.567l53.841-106h41.567L153.863,492z M278,492    h-44V386h44V492z M399.704,492h-41.567l-53.841-106h41.567L399.704,492z"></path><path
-                                                    id="XMLID_1000_"
-                                                    d="M115.17,74c2.64,0,5.21-1.07,7.08-2.931c1.859-1.859,2.93-4.439,2.93-7.069s-1.07-5.21-2.93-7.07    c-1.86-1.86-4.44-2.93-7.08-2.93c-2.63,0-5.21,1.069-7.061,2.93c-1.869,1.86-2.939,4.44-2.939,7.07s1.07,5.21,2.939,7.069    C109.96,72.93,112.54,74,115.17,74z"></path><path
-                                                    id="XMLID_1001_"
-                                                    d="M256.127,185.066H320c5.522,0,10-4.478,10-10s-4.478-10-10-10h-63.873c-5.522,0-10,4.478-10,10    S250.604,185.066,256.127,185.066z"></path><path
-                                                    id="XMLID_1025_"
-                                                    d="M256.127,137.066h114.871c5.522,0,10-4.478,10-10s-4.478-10-10-10H256.127c-5.522,0-10,4.478-10,10    S250.604,137.066,256.127,137.066z"></path><path
-                                                    id="XMLID_1026_"
-                                                    d="M418.069,134.14c1.86-1.859,2.931-4.439,2.931-7.07c0-2.63-1.07-5.21-2.931-7.069    c-1.859-1.87-4.439-2.931-7.069-2.931s-5.21,1.061-7.07,2.931c-1.86,1.859-2.93,4.43-2.93,7.069c0,2.631,1.069,5.211,2.93,7.07    c1.86,1.86,4.44,2.93,7.07,2.93S416.21,136,418.069,134.14z"></path><path
-                                                    id="XMLID_1036_"
-                                                    d="M256.127,316.987H462c5.522,0,10-4.478,10-10V176.313c0-5.522-4.478-10-10-10s-10,4.478-10,10v120.675    h-20v-98.736c0-5.522-4.478-10-10-10h-48c-5.522,0-10,4.478-10,10v16.575h-38c-5.522,0-10,4.478-10,10v23.101h-38    c-5.522,0-10,4.478-10,10v39.061h-11.873c-5.522,0-10,4.478-10,10S250.604,316.987,256.127,316.987z M384,208.251h28v88.736h-28    v-72.161V208.251z M336,234.826h28v62.161h-28v-39.061V234.826z M288,267.927h28v29.061h-28V267.927z"></path>
-</g>
-</g></svg></span>
-                                                <h5 class="u-text u-text-palette-2-base u-text-5">Репорти</h5>
-                                            </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="u-size-26 u-size-60-md">
-                            <div class="u-layout-row">
-                                <div class="u-container-style u-layout-cell u-right-cell u-size-60 u-layout-cell-5">
-                                    <div class="u-container-layout u-valign-middle u-container-layout-5">
-                                        <img class="u-expanded-width u-image u-image-contain u-image-1"
-                                             src="{% static '/images/56.png' %}" data-image-width="618"
-                                             data-image-height="834">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Earnings (Annual)
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                             style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                             aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Pending Requests
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                             aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                             aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> Direct
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Social
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Referral
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Content Column -->
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Project Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="small font-weight-bold">Server Migration <span
+                                            class="float-right">20%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Sales Tracking <span
+                                            class="float-right">40%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Customer Database <span
+                                            class="float-right">60%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: 60%"
+                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Payout Details <span
+                                            class="float-right">80%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Account Setup <span
+                                            class="float-right">Complete!</span></h4>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Color System -->
+                            <div class="row">
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-primary text-white shadow">
+                                        <div class="card-body">
+                                            Primary
+                                            <div class="text-white-50 small">#4e73df</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-success text-white shadow">
+                                        <div class="card-body">
+                                            Success
+                                            <div class="text-white-50 small">#1cc88a</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-info text-white shadow">
+                                        <div class="card-body">
+                                            Info
+                                            <div class="text-white-50 small">#36b9cc</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-warning text-white shadow">
+                                        <div class="card-body">
+                                            Warning
+                                            <div class="text-white-50 small">#f6c23e</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-danger text-white shadow">
+                                        <div class="card-body">
+                                            Danger
+                                            <div class="text-white-50 small">#e74a3b</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-secondary text-white shadow">
+                                        <div class="card-body">
+                                            Secondary
+                                            <div class="text-white-50 small">#858796</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-light text-black shadow">
+                                        <div class="card-body">
+                                            Light
+                                            <div class="text-black-50 small">#f8f9fc</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-dark text-white shadow">
+                                        <div class="card-body">
+                                            Dark
+                                            <div class="text-white-50 small">#5a5c69</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                             src="{% static 'img/undraw_posting_photo.svg' %}" alt="...">
+                                    </div>
+                                    <p>Add some quality, svg illustrations to your project courtesy of <a
+                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
+                                        constantly updated collection of beautiful svg images that you can use
+                                        completely free and without attribution!</p>
+                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
+                                        unDraw &rarr;</a>
+                                </div>
+                            </div>
+
+                            <!-- Approach -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Finance manager beta makes extensive use of Bootstrap 4 utility classes in order
+                                        to reduce
+                                        CSS bloat and poor page performance. Custom CSS classes are used to create
+                                        custom components and custom utility classes.</p>
+                                    <p class="mb-0">Before working with this theme, you should become familiar with the
+                                        Bootstrap framework, especially the utility classes.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
+                <!-- /.container-fluid -->
+
             </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            {% include 'base/footer.html' %}
+            <!-- End of Footer -->
+
         </div>
-    </section>
-    <section class="u-align-center u-clearfix u-image u-shading u-section-2" src="" data-image-width="256"
-             data-image-height="256" id="sec-fc2f">
-        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-            <h1 class="u-text u-title u-text-1">INTUITIVE</h1>
-            <p class="u-large-text u-text u-text-variant u-text-2">Sample text. Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
-            <a href="{% url 'account_login' %}" class="u-btn u-button-style u-palette-2-base u-btn-1">Read More</a>
-        </div>
-    </section>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    {% include "base/snippets/modal_logout.html" %}
+
     </body>
+{% endblock %}
+
+{% block extra_js %}
+    <!-- Page level plugins -->
+
+    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+
 {% endblock %}
