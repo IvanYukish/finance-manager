@@ -1,4 +1,5 @@
 from django import forms
+
 from core.models import Debt, Category, Transaction
 
 
@@ -12,6 +13,7 @@ class DebtForm(UserHiddenInput):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['description'].widget = forms.Textarea()
+
     class Meta:
         model = Debt
         fields = ['user', 'debtor_name', 'mode', 'prise', 'description']
