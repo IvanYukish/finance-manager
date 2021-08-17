@@ -1,0 +1,29 @@
+{% extends "base/main_content.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head_title %}Form{% endblock %}
+
+{% block extra_css %}
+    <link href="{% static 'css/custom/card.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block main %}
+    <div id="content">
+        <div class="container">
+            <div class="main-body">
+                <div class="row">
+                    <div class="col-lg-11">
+                        <div class="card">
+                            {% block card %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
