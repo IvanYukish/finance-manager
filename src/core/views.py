@@ -1,3 +1,5 @@
+from urllib import request
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
@@ -161,6 +163,11 @@ class TransactionCreateView(LoginRequiredMixin, CreateView, SuccessMessageMixin)
     template_name = 'core/transaction_create.html'
     context_object_name = 'transaction'
     success_message = _('Транзакція була успішно додана')
+
+    def get_form_kwargs(self):
+        kwargs = super(TransactionCreateView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
 
 
 class TransactionUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView, SuccessMessageMixin):
