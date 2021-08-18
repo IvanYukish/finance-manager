@@ -27,12 +27,11 @@ class CategoryForm(UserHiddenInput):
 class TransactionForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop('request')
+        self.user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
         self.fields['category'].empty_label = "Category not selected"
-        self.fields['category'].queryset = Category.objects.filter(user=self.request.user)
+        self.fields['category'].queryset = Category.objects.filter(user=self.user)
 
     class Meta:
         model = Transaction
         fields = ['prise', 'category', 'description']
-        # exclude = ('category',)
