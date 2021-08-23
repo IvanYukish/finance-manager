@@ -146,7 +146,8 @@
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        {% render_field form.email class+="form-control" placeholder="Email" %}
+                                        {% render_field form.email type="email" class+="form-control" placeholder="@mail.com" onfocus="check_input(this.name)"%}
+                                        <span id="error_email" class="small"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -154,8 +155,10 @@
                                         <h6 class="mb-0">Phone</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        {% render_field form.phone_number class+="form-control" placeholder="Phone number" %}
+                                        {% render_field form.phone_number type="tel" title="+380123456789" class+="form-control" placeholder="+380123456789"  onfocus="check_input(this.name)" %}
+                                        <span id="error_phone_number" class="small"></span>
                                     </div>
+                                    {#pattern="^([\+][3][8])\d{10}" you can use this pattern at render_field form.phone_number#}
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-3"></div>
