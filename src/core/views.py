@@ -162,6 +162,11 @@ class TransactionCreateView(LoginRequiredMixin, CreateView, SuccessMessageMixin)
     context_object_name = 'transaction'
     success_message = _('Транзакція була успішно додана')
 
+    def get_form_kwargs(self):
+        kwargs = super(TransactionCreateView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
 
 class TransactionUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView, SuccessMessageMixin):
     model = Transaction
@@ -169,6 +174,11 @@ class TransactionUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView,
     template_name = 'core/transaction_update.html'
     context_object_name = 'transaction'
     success_message = _('Дані про транзакцію були успішно змінені')
+
+    def get_form_kwargs(self):
+        kwargs = super(TransactionUpdateView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def get_object(self, queryset=None):
         transaction_id = int(self.kwargs.get('id'))

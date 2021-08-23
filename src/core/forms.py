@@ -1,5 +1,4 @@
 from django import forms
-
 from core.models import Debt, Category, Transaction
 
 
@@ -26,9 +25,12 @@ class CategoryForm(UserHiddenInput):
 
 
 class TransactionForm(forms.ModelForm):
+
     def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
         self.fields['category'].empty_label = "Category not selected"
+        self.fields['category'].queryset = Category.objects.filter(user=self.user)
 
     class Meta:
         model = Transaction
